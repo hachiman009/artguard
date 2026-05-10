@@ -1,0 +1,337 @@
+export default function ArtShieldApp() {
+  const features = [
+    {
+      title: "Artwork Protection",
+      description:
+        "Attach ownership details and keep your work organized in one calm workspace.",
+    },
+    {
+      title: "Misuse Detection",
+      description:
+        "Visually check possible reuse with a clean and simple scanning experience.",
+    },
+    {
+      title: "Report System",
+      description:
+        "Collect links, proof, and notes in a structured form when something feels wrong.",
+    },
+  ];
+
+  const artworks = [
+    "Portrait Study",
+    "Urban Sketch",
+    "Abstract Lines",
+    "Hand Concept",
+  ];
+
+  return (
+    <div className="min-h-screen bg-[#f8f7f4] text-stone-900 relative overflow-hidden selection:bg-stone-900 selection:text-white">
+      <SketchBackdrop />
+
+      <header className="sticky top-0 z-40 border-b border-black/5 bg-[#f8f7f4]/80 backdrop-blur-xl">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4 lg:px-10">
+          <div className="flex items-center gap-3">
+            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-black/10 bg-white shadow-sm">
+              ✎
+            </div>
+            <div>
+              <p className="text-sm font-semibold tracking-tight">ArtShield AI</p>
+              <p className="text-xs text-stone-500">Minimal artist protection UI</p>
+            </div>
+          </div>
+
+          <nav className="hidden items-center gap-8 text-sm text-stone-600 md:flex">
+            <a href="#home" className="transition hover:text-black">Home</a>
+            <a href="#features" className="transition hover:text-black">Features</a>
+            <a href="#dashboard" className="transition hover:text-black">Dashboard</a>
+            <a href="#upload" className="transition hover:text-black">Upload</a>
+            <a href="#about" className="transition hover:text-black">About</a>
+          </nav>
+
+          <button className="rounded-full bg-stone-900 px-5 py-2.5 text-sm font-medium text-white transition hover:-translate-y-0.5">
+            Start
+          </button>
+        </div>
+      </header>
+
+      <main className="relative z-10">
+        <section id="home" className="mx-auto max-w-7xl px-6 pb-20 pt-16 lg:px-10 lg:pb-28 lg:pt-24">
+          <div className="grid items-center gap-12 lg:grid-cols-[1.1fr_0.9fr]">
+            <div>
+              <span className="inline-flex rounded-full border border-black/10 bg-white px-4 py-1.5 text-xs uppercase tracking-[0.22em] text-stone-500 shadow-sm">
+                Intro
+              </span>
+              <h1 className="mt-6 max-w-2xl text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+                Protect your art with a calm, minimal interface.
+              </h1>
+              <p className="mt-6 max-w-xl text-base leading-7 text-stone-600 md:text-lg">
+                A soft and clean UI for artists to upload work, track ownership,
+                detect possible misuse, and report copied content without visual clutter.
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-4">
+                <button className="rounded-full bg-stone-900 px-6 py-3 text-sm font-medium text-white shadow-sm transition hover:-translate-y-0.5">
+                  Explore UI
+                </button>
+                <button className="rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-medium text-stone-700 transition hover:bg-stone-100">
+                  View Dashboard
+                </button>
+              </div>
+            </div>
+
+            <div className="rounded-[32px] border border-black/8 bg-white/85 p-5 shadow-[0_20px_80px_rgba(0,0,0,0.06)] backdrop-blur-sm">
+              <div className="rounded-[26px] bg-[#f4f2ee] p-4">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <p className="text-sm font-medium">Sketch Preview</p>
+                    <p className="text-xs text-stone-500">Artwork scan overview</p>
+                  </div>
+                  <span className="rounded-full border border-emerald-200 bg-emerald-50 px-3 py-1 text-xs text-emerald-700">
+                    Safe
+                  </span>
+                </div>
+
+                <div className="grid gap-4 md:grid-cols-[1fr_0.8fr]">
+                  <div className="relative flex min-h-[260px] items-center justify-center overflow-hidden rounded-[22px] border border-dashed border-black/10 bg-white">
+                    <svg viewBox="0 0 300 260" className="absolute inset-0 h-full w-full opacity-30">
+                      <path d="M70 180C80 120 125 88 165 86C207 85 238 110 250 160" stroke="currentColor" strokeWidth="1.7" fill="none" className="text-stone-500" />
+                      <path d="M100 188C110 150 138 132 160 132C186 132 206 147 214 176" stroke="currentColor" strokeWidth="1.2" fill="none" className="text-stone-400" />
+                      <circle cx="160" cy="96" r="24" stroke="currentColor" strokeWidth="1.5" fill="none" className="text-stone-500" />
+                    </svg>
+                    <div className="relative text-center">
+                      <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f4] text-xl shadow-sm">
+                        ✦
+                      </div>
+                      <p className="mt-3 text-sm text-stone-500">Minimal art preview</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-3">
+                    <MiniCard title="Artwork" value="Portrait Study 01" />
+                    <MiniCard title="Ownership" value="Metadata attached" />
+                    <MiniCard title="Protection" value="Watermark enabled" />
+                    <MiniCard title="Scan Result" value="91% original" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="features" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+          <SectionHeading label="Features" title="Simple sections with breathing space" />
+          <div className="mt-10 grid gap-6 md:grid-cols-3">
+            {features.map((feature) => (
+              <div
+                key={feature.title}
+                className="rounded-[28px] border border-black/8 bg-white/90 p-7 shadow-sm transition duration-300 hover:-translate-y-1 hover:shadow-md"
+              >
+                <div className="mb-5 flex h-12 w-12 items-center justify-center rounded-full border border-black/10 bg-[#f8f7f4] text-lg">
+                  ✎
+                </div>
+                <h3 className="text-lg font-semibold tracking-tight">{feature.title}</h3>
+                <p className="mt-3 text-sm leading-6 text-stone-600">{feature.description}</p>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section id="dashboard" className="mx-auto max-w-7xl px-6 py-16 lg:px-10">
+          <div className="rounded-[34px] border border-black/8 bg-white/90 p-6 shadow-[0_20px_70px_rgba(0,0,0,0.05)] md:p-8">
+            <div className="flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
+              <SectionHeading label="Dashboard" title="A quiet space for your collection" compact />
+              <button className="rounded-full border border-black/10 bg-[#f8f7f4] px-5 py-2.5 text-sm text-stone-700 transition hover:bg-stone-200">
+                Manage Artworks
+              </button>
+            </div>
+
+            <div className="mt-8 grid gap-4 md:grid-cols-3">
+              <StatCard title="Total Uploads" value="18" />
+              <StatCard title="Protected" value="14" />
+              <StatCard title="Alerts" value="03" />
+            </div>
+
+            <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+              {artworks.map((art, index) => (
+                <div key={art} className="rounded-[24px] border border-black/8 bg-[#faf9f6] p-4 transition hover:shadow-md">
+                  <div className="relative aspect-[4/5] overflow-hidden rounded-[20px] border border-dashed border-black/10 bg-white">
+                    <svg viewBox="0 0 200 240" className="absolute inset-0 h-full w-full opacity-25">
+                      <path d={`M30 ${70 + index * 5}C65 40 125 35 165 100`} stroke="currentColor" strokeWidth="1.4" fill="none" className="text-stone-500" />
+                      <path d={`M45 ${170 - index * 6}C85 145 120 140 160 205`} stroke="currentColor" strokeWidth="1.1" fill="none" className="text-stone-400" />
+                    </svg>
+                  </div>
+                  <p className="mt-4 text-sm font-medium">{art}</p>
+                  <p className="mt-1 text-xs text-stone-500">Protected artwork</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section id="upload" className="mx-auto grid max-w-7xl gap-6 px-6 py-16 lg:grid-cols-2 lg:px-10">
+          <div className="rounded-[32px] border border-black/8 bg-white/90 p-8 shadow-sm">
+            <SectionHeading label="Upload" title="Drop your artwork here" compact />
+            <div className="mt-8 rounded-[28px] border-2 border-dashed border-black/10 bg-[#faf9f6] p-10 text-center">
+              <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full border border-black/10 bg-white shadow-sm">
+                ⤴
+              </div>
+              <p className="mt-4 text-base font-medium">Drag and drop image</p>
+              <p className="mt-2 text-sm text-stone-500">PNG, JPG, WEBP</p>
+              <button className="mt-6 rounded-full bg-stone-900 px-5 py-2.5 text-sm text-white transition hover:opacity-90">
+                Select File
+              </button>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-black/8 bg-white/90 p-8 shadow-sm">
+            <SectionHeading label="Details" title="Soft form styling" compact />
+            <div className="mt-8 space-y-5">
+              <InputField label="Artwork title" placeholder="Enter title" />
+              <InputField label="Artist name" placeholder="Enter artist name" />
+              <ToggleItem label="Add invisible watermark" />
+              <ToggleItem label="Attach metadata" />
+              <button className="w-full rounded-full bg-stone-900 px-5 py-3 text-sm font-medium text-white transition hover:opacity-90">
+                Protect Artwork
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section className="mx-auto grid max-w-7xl gap-6 px-6 py-16 lg:grid-cols-2 lg:px-10">
+          <div className="rounded-[32px] border border-black/8 bg-white/90 p-8 shadow-sm">
+            <SectionHeading label="Detection" title="Clean result display" compact />
+            <div className="mt-8 rounded-[28px] bg-[#faf9f6] p-5">
+              <div className="rounded-[22px] border border-dashed border-black/10 bg-white p-8 text-center text-sm text-stone-500">
+                Upload artwork to scan
+              </div>
+              <div className="mt-5 grid gap-4 sm:grid-cols-2">
+                <div className="rounded-[20px] border border-emerald-200 bg-emerald-50 p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-emerald-700">Status</p>
+                  <p className="mt-2 text-lg font-semibold text-emerald-800">Likely Safe</p>
+                </div>
+                <div className="rounded-[20px] border border-black/8 bg-white p-4">
+                  <p className="text-xs uppercase tracking-[0.18em] text-stone-500">Confidence</p>
+                  <p className="mt-2 text-lg font-semibold">87%</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="rounded-[32px] border border-black/8 bg-white/90 p-8 shadow-sm">
+            <SectionHeading label="Report" title="Structured reporting form" compact />
+            <div className="mt-8 space-y-5">
+              <InputField label="Suspicious link" placeholder="Paste URL" />
+              <InputField label="Proof file" placeholder="Upload screenshots or files" />
+              <div>
+                <label className="mb-2 block text-sm text-stone-600">Description</label>
+                <textarea
+                  placeholder="Write what happened"
+                  className="min-h-[130px] w-full rounded-[24px] border border-black/10 bg-[#faf9f6] px-4 py-3 text-sm outline-none transition focus:border-stone-500"
+                />
+              </div>
+              <button className="w-full rounded-full border border-black/10 bg-[#f8f7f4] px-5 py-3 text-sm font-medium text-stone-700 transition hover:bg-stone-200">
+                Submit Report
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className="mx-auto max-w-7xl px-6 pb-24 pt-8 lg:px-10">
+          <div className="rounded-[34px] border border-black/8 bg-white/90 p-8 shadow-sm md:p-10">
+            <SectionHeading label="About" title="Designed with calm visual balance" compact />
+            <div className="mt-8 grid gap-8 md:grid-cols-2">
+              <p className="text-base leading-7 text-stone-600">
+                This UI/UX concept focuses on minimal layouts, soft sketch-like visuals,
+                comfortable spacing, rounded forms, and simple artist-first interactions.
+              </p>
+              <div className="space-y-5 text-sm leading-6 text-stone-600">
+                <div>
+                  <p className="font-medium text-stone-900">Problem</p>
+                  <p className="mt-1">Artists need simple tools to organize protection and misuse reporting.</p>
+                </div>
+                <div>
+                  <p className="font-medium text-stone-900">Approach</p>
+                  <p className="mt-1">Use clean sections, sketch backgrounds, and minimal controls instead of heavy UI.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-black/5 bg-white/70">
+        <div className="mx-auto flex max-w-7xl flex-col gap-2 px-6 py-6 text-sm text-stone-500 sm:flex-row sm:items-center sm:justify-between lg:px-10">
+          <p>© 2026 ArtShield AI</p>
+          <p>Minimal UI/UX concept for artist protection</p>
+        </div>
+      </footer>
+    </div>
+  );
+}
+
+function SectionHeading({ label, title, compact = false }) {
+  return (
+    <div>
+      <p className="text-sm uppercase tracking-[0.22em] text-stone-400">{label}</p>
+      <h2 className={`${compact ? "mt-2 text-2xl" : "mt-3 text-3xl"} font-semibold tracking-tight`}>
+        {title}
+      </h2>
+    </div>
+  );
+}
+
+function StatCard({ title, value }) {
+  return (
+    <div className="rounded-[24px] border border-black/8 bg-[#faf9f6] p-5">
+      <p className="text-sm text-stone-500">{title}</p>
+      <p className="mt-2 text-3xl font-semibold tracking-tight">{value}</p>
+    </div>
+  );
+}
+
+function MiniCard({ title, value }) {
+  return (
+    <div className="rounded-[20px] border border-black/8 bg-white p-4">
+      <p className="text-[11px] uppercase tracking-[0.2em] text-stone-400">{title}</p>
+      <p className="mt-2 text-sm font-medium text-stone-800">{value}</p>
+    </div>
+  );
+}
+
+function InputField({ label, placeholder }) {
+  return (
+    <div>
+      <label className="mb-2 block text-sm text-stone-600">{label}</label>
+      <input
+        placeholder={placeholder}
+        className="w-full rounded-[24px] border border-black/10 bg-[#faf9f6] px-4 py-3 text-sm outline-none transition focus:border-stone-500"
+      />
+    </div>
+  );
+}
+
+function ToggleItem({ label }) {
+  return (
+    <div className="flex items-center justify-between rounded-[22px] border border-black/8 bg-[#faf9f6] px-4 py-3">
+      <span className="text-sm text-stone-700">{label}</span>
+      <div className="flex h-7 w-12 items-center rounded-full bg-stone-900 px-1">
+        <div className="h-5 w-5 translate-x-5 rounded-full bg-white" />
+      </div>
+    </div>
+  );
+}
+
+function SketchBackdrop() {
+  return (
+    <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.12]">
+      <svg viewBox="0 0 1440 1200" className="h-full w-full">
+        <path d="M140 220C220 140 340 150 395 230C450 310 430 410 350 470C280 520 180 500 135 430C88 360 80 280 140 220Z" fill="none" stroke="currentColor" strokeWidth="2" className="text-stone-700" />
+        <path d="M950 200C1035 150 1140 165 1190 245C1235 315 1210 410 1130 455C1060 495 970 470 925 410C875 345 880 245 950 200Z" fill="none" stroke="currentColor" strokeWidth="2" strokeDasharray="6 10" className="text-stone-700" />
+        <path d="M650 600C730 530 860 535 935 615" fill="none" stroke="currentColor" strokeWidth="1.7" className="text-stone-700" />
+        <path d="M690 565C740 535 815 535 870 575" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-stone-700" />
+        <path d="M210 930C285 860 380 860 435 920C495 985 475 1095 375 1120C275 1145 175 1090 155 1010C145 973 160 952 210 930Z" fill="none" stroke="currentColor" strokeWidth="2" className="text-stone-700" />
+        <path d="M1110 760C1140 720 1200 715 1238 750C1275 785 1268 845 1222 872" fill="none" stroke="currentColor" strokeWidth="1.4" className="text-stone-700" />
+      </svg>
+    </div>
+  );
+}
